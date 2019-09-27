@@ -17,7 +17,7 @@
 ## Overview
 [Back to Top](#environment-setup)
 
-This guide provides instructions for how to setup a local development environment on a disconnected network using the resources available in this directory.
+This guide provides instructions for how to setup a local development environment on a disconnected network using the resources described in the [resources](./resources.md) document.
 
 ### Directory Contents
 [Back to Top](#environment-setup)
