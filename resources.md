@@ -72,6 +72,10 @@ The offline environment directory structure, as specified in the [readme](./read
 * [Python 3](https://www.python.org/downloads/)
     * Latest version
 * [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express)
+    * Run the installer and complete the following steps:
+        1. Click **Download Media**
+        2. Select **LocalDB** and update the **Download Location** to wherever you want to download it.
+        3. Click **Download**
 * [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)
 * [Visual Studio Code](https://code.visualstudio.com/#alt-downloads)
 * [Yarn](https://yarnpkg.com/lang/en/)
