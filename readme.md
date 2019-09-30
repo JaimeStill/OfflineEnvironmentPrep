@@ -1,3 +1,5 @@
+> Working through issues getting .NET Core 3 to work on a disconnected network. This will be updated soon!
+
 # Environment Setup
 
 **External Documents**  
