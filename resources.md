@@ -3,6 +3,7 @@
 * [Overview](#overview)
     * [Directory Structure](#directory-structure)
 * [Apps](#apps)
+    * [SQL Server Express](#sql-server-express)
     * [Visual Studio Build Tools](#visual-studio-build-tools)
 * [Code Extensions](#code-extensions)
     * [Theming](#theming)
@@ -13,6 +14,7 @@
 * [Platform](#platform)
     * [IIS](#iis)
     * [Sass](#sass)
+    * [Program Files](#program-files)
     * [User Profile](#user-profile)
         * [.dotnet](#dotnet)
         * [.node-gyp](#node-gyp)
@@ -34,6 +36,7 @@ The offline environment directory structure, as specified in the [readme](./read
 
 * Environment
     * apps
+        * sql-2017-express
         * vs-build-tools
     * code-extensions
     * examples
@@ -44,6 +47,9 @@ The offline environment directory structure, as specified in the [readme](./read
     * platform
         * IIS
         * node-sass
+        * Program Files
+            * dotnet
+                * sdk
         * user-profile
             * .dotnet
             * .node-gyp
@@ -69,16 +75,23 @@ The offline environment directory structure, as specified in the [readme](./read
 * [Node](https://nodejs.org/en/)
     * Current, not LTS
 * [PowerShell Core](https://github.com/PowerShell/PowerShell#get-powershell)
+* [Python 2](https://www.python.org/downloads/)
+    * Latest Python 2 version
 * [Python 3](https://www.python.org/downloads/)
-    * Latest version
-* [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express)
-    * Run the installer and complete the following steps:
-        1. Click **Download Media**
-        2. Select **LocalDB** and update the **Download Location** to wherever you want to download it.
-        3. Click **Download**
+    * Latest Python 3 version
 * [SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)
 * [Visual Studio Code](https://code.visualstudio.com/#alt-downloads)
 * [Yarn](https://yarnpkg.com/lang/en/)
+
+### SQL Server Express
+[Back to Top](#resources)
+
+* [SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express)
+
+1. Click **Download now** and run the installer
+2. Click the **Download Media** option
+3. Select **Express Advanced**
+4. After the client downloads, run the client to generate the install directory (in this case, I built it in a folder named `sql-2017-express`)
 
 ### Visual Studio Build Tools
 [Back to Top](#resources)
@@ -203,6 +216,11 @@ This directory contains all of the resources necessary for [Hosting an ASP.NET C
 The `Environment\platform\node-sass` directory contains all of the compiled **node-sass** versions for the target system. In this case, `win32-x64`.
 
 These are acquired from [node-sass/releases](https://github.com/sass/node-sass/releases).
+
+### Program Files
+[Back to Top](#resources)
+
+Certain required pre-built packages are cached at `C:\Program Files\dotnet\sdk\NuGetFallbackFolder`. Whenever you need to capture the NuGet cache for your offline environment, you will need to backup this directory.
 
 ### User Profile
 [Back to Top](#resources)
