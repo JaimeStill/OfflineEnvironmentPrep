@@ -44,27 +44,36 @@ This section will provide an install order and set of instructions for installin
 4. Install the **.NET Core SDK** (latest version*
 5. Install **Node.js** (latest version)
 6. Install **PowerShell Core**
-7. Install **Python**
+7. Install **Python 3**
   * Install launcher for all users, Add Python 3.7 to PATH, then click *Customize installation*
   * Click *Next*
   * Install for all users, Precompile standard library, then click *Install*
   * When install is complete, be sure to click the **Disable Max Path Length** option
-8. Install **SqlLocalDb**
-  * Database server is `(localdb)\MSSQLLocalDB`
-  * The first time you setup access to this database in SQL Server Management Studio, the database will be created. Be patient if it seems to be taking a moment.
-9. Install **SQL Server Management Studio**
-  * Open and setup a connection to `(localdb)\MSSQLLocalDB` before attempting to interact with the database via Entity Framework
-10. Install **Visual Studio Code**
-11. Install **Yarn**
-12. Install **Git**
+8. Install **Python 2**
+  * Keep *Install for all users* selected and click **Next**
+  * Keep remaining defaults and finish installation
+9. Install **sql-2017-express\SETUP.EXE**
+  * Click **New SQL Server stand-alone installation or add features to an existing installation**
+  * Leave *Use Microsoft Update to check for updates (recommended)* **UNCHECKED** and click **Next**
+  * Click **Next** until you get to the license agreement
+  * Check *I accept the license terms.* and click **Next**
+  * Set *Named instance:* to whatever you want the instance to be named, and click **Next**
+  * Click **Next**
+  * Leave *Windows authentication mode* selected and add any user accounts that you want to have access to the server instance, then click **Next**
+  * Finalize installation
+10. Install **SQL Server Management Studio**
+  * Open and setup a connection to `{ComputerName}\{SqlInstanceName}`
+11. Install **Visual Studio Code**
+12. Install **Yarn**
+13. Install **Git**
   * Select to **Use TTF in each console**
   * Use **Visual Studio Code** as the default editor
-13. In `apps\vs-build-tools\certificates`, select each certificate, right-click, and click *Install*. For each certificate:
+14. In `apps\vs-build-tools\certificates`, select each certificate, right-click, and click *Install*. For each certificate:
   * Select **Local Machine** and click *Next*
   * Click *Next*
   * Click *Finish*
-14. Once each certificate is installed, restart your computer
-15. Install `apps\vs-build-tools\vs_buildtools.exe`
+15. Once each certificate is installed, restart your computer
+16. Install `apps\vs-build-tools\vs_buildtools.exe`
 
 ## Fonts
 [Back to Top](#environment-setup)
@@ -91,15 +100,17 @@ Directory | Purpose
 ----------|--------
 `iis` | Contains the necessary executables for hosting an <span>ASP.NET</span> Core application in IIS
 `node-sass` | Contains all of the compiled binary versions for the `node-sass` client dependency
+`Program Files` | Contains cached resources for NuGet's `NuGetFallbackFolder`, which contains a pre-built package cache
 `user-profile` | Contains cached resources necessary for configuring the environment on a user's machine profile
 `yarn` | Contains a template for the `.yarnrc` configuration file
 
-> The rest of this section will be focused on configuring the dev environment with the resources available in the `user-profile` sub-directory.
+> The rest of this section will be focused on configuring the dev environment with the resources available in the `Program Files` and `user-profile` sub-directories.
 
-1. Copy the `.node-gyp` directory to the *%USERPROFILE%* directory.
-2. Copy the `.nuget` directory to *%USERPROFILE%*, then extract the `packages.zip` file. The files contained in `packages.zip` should be inside of a `packages` folder where `packages.zip` is located. When extracted, `packages.zip` can be deleted.
-3. Extract the contents of `.vscode\extensions\ms-vscode.csharp-{version}`. Copy the extracted contents and paste them into `%USERPROFILE%\.vscode\extensions\ms-vscode.csharp-{version}`.
-4. Extract the contents of `.dotnet\tools`. Copy the extracted **tools** folder and paste it into the `%USERPROFILE%\.dotnet` directory.
+1. Unzip `Program Files\dotnet\sdk\NuGetFallbackFolder.zip`, copy the contents of the unzipped directory, and paste them into `C:\Program Files\dotnet\sdk\NuGetFallbackFolder`.
+2. Copy the `.node-gyp` directory to the *%USERPROFILE%* directory.
+3. Copy the `.nuget` directory to *%USERPROFILE%*, then extract the `packages.zip` file. The files contained in `packages.zip` should be inside of a `packages` folder where `packages.zip` is located. When extracted, `packages.zip` can be deleted.
+4. Extract the contents of `.vscode\extensions\ms-vscode.csharp-{version}`. Copy the extracted contents and paste them into `%USERPROFILE%\.vscode\extensions\ms-vscode.csharp-{version}`.
+5. Extract the contents of `.dotnet\tools`. Copy the extracted **tools** folder and paste it into the `%USERPROFILE%\.dotnet` directory.
     * This is necessary because the `dotnet` CLI no longer includes the `dotnet-ef` command line tools by default. Because the NuGet cache does not capture NuGet packaged tools that are installed via commands such as `dotnet tools install --global dotnet-ef`, the installed tool configuration needs to be replicated in the `.dotnet` directory.
 
 > Nothing needs to be done with the `.node-sass` directory. I've placed it in the Share drive at `Dev\Resources` and configured the `sass-binary-path` variable in `.yarnrc` to point to the compiled binaries stored at this location.
